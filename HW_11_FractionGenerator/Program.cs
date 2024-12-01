@@ -6,8 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var value = new Value();
 
-builder.Services.AddSingleton<IGeneration>(value);
 builder.Services.AddSingleton<IReader>(value);
+builder.Services.AddSingleton<IGeneration>(value);
+
 
 var app = builder.Build();
 
@@ -39,7 +40,6 @@ class GenMid
 class Value : IGeneration, IReader
 {
 	string fraction = "none";
-	string value = "";
 	int numerator;
 	int denominator;
 	public string GenerateFraction()
@@ -64,11 +64,11 @@ class Value : IGeneration, IReader
 			int temp = numerator % denominator;
 			if (temp != 0)
 			{
-				return $"{value} {temp}/{denominator}";
+				return fraction = $"{value} {temp}/{denominator}";
 			}
 			else
 			{
-				return $"{value}";
+				return fraction = $"{value}";
 			}
 
 		}
